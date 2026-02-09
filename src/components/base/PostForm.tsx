@@ -10,7 +10,7 @@ export default function PostForm({ post, isEditing, setEditPost, onSuccess }: { 
     const [validationErrors, setValidationErrors] = useState<{} | IValidationError>({})
     const [serverErrors, setServerErrors] = useState<IError | null>(null);
 
-    const handleFormSubmit =  async () => {
+    const handleFormSubmit = async () => {
         const errors: {} | IValidationError = await Validation.validatePostForm(fields);
         setValidationErrors(errors);
 
@@ -46,6 +46,11 @@ export default function PostForm({ post, isEditing, setEditPost, onSuccess }: { 
                     onChange={(e) => setFields({ ...fields, title: e.target.value })}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
                 />
+                {(validationErrors as IValidationError).title && (
+                    <span className="block text-sm text-red-600 bg-red-50 border border-red-200 p-2 rounded-md">
+                        {(validationErrors as IValidationError).title}
+                    </span>
+                )}
             </div>
             <div className="flex flex-col gap-y-2">
                 <label htmlFor="post-content" className="block text-sm font-medium text-gray-700">
@@ -58,15 +63,27 @@ export default function PostForm({ post, isEditing, setEditPost, onSuccess }: { 
                     onChange={(e) => setFields({ ...fields, content: e.target.value })}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
                 ></textarea>
+                {(validationErrors as IValidationError).content && (
+                    <span className="block text-sm text-red-600 bg-red-50 border border-red-200 p-2 rounded-md">
+                        {(validationErrors as IValidationError).content}
+                    </span>
+                )}
+            </div>
+            <div className="flex flex-col gap-y-2">
+                {serverErrors && (
+                    <span className="block text-sm text-red-600 bg-red-50 border border-red-200 p-2 rounded-md">
+                        {serverErrors.message}
+                    </span>
+                )}
             </div>
             <div className="pt-2 flex flex-wrap justify-end gap-2">
                 {
                     isEditing && (
-                        <button 
+                        <button
                             type="button"
                             onClick={() => setEditPost(null)}
                             className="bg-gray-300 px-4 py-2 rounded cursor-pointer hover:brightness-95 active:brightness-90"
-                            >
+                        >
                             Cancel
                         </button>
                     )

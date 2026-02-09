@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { IPost } from "../interfaces/IPost";
 import PostService from "../services/PostService";
 import type { IError } from "../interfaces/IError";
