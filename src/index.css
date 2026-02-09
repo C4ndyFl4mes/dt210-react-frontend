@@ -3,3 +3,8 @@
 body {
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
 }
+
+.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
