@@ -32,7 +32,7 @@ export default function PostService() {
     // Hämtar alla inlägg.
     async function getAll(): Promise<Array<IPost> | IError> {
         try {
-            const res: AxiosResponse<Array<IPost>> = await client.get<Array<IPost>>("/all", config);
+            const res: AxiosResponse<Array<IPost>> = await client.get<Array<IPost>>("/", config);
             return handleSuccess<Array<IPost>>(res);
         } catch (error: unknown) {
             console.log(error);
@@ -60,7 +60,7 @@ export default function PostService() {
     // Ändra ett inlägg.
     async function put(post: IPost): Promise<IPost | IError> {
         try {
-            const res: AxiosResponse<IPost> = await client.put<IPost>(`/${post.postId!}, post, config`);
+            const res: AxiosResponse<IPost> = await client.put<IPost>(`/${post.postId!}`, post, config);
             return handleSuccess<IPost>(res);
         } catch (error: unknown) {
             if ((error as AxiosError).isAxiosError) {

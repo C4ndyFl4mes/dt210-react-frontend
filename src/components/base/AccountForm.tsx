@@ -94,7 +94,7 @@ export default function AccountForm({ regOrLogin }: { regOrLogin: boolean }) {
                 <button
                     type="button"
                     onClick={handleFormSubmit}
-                    className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition cursor-pointer"
+                    className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:brightness-95 active:brightness-90 cursor-pointer"
                 >
                     {regOrLogin ? "Login" : "Register"}
                 </button>

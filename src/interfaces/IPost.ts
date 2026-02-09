@@ -1,6 +1,6 @@
 export interface IPost {
-    postId?: string;
-    authorId?: string;
+    postId?: number;
+    authorId?: number;
     createdAt?: string;
     authorUsername?: string;
     title: string;
