@@ -19,12 +19,12 @@ class UserStore {
     }
 
     logOut = flow(function* (this: UserStore) {
-        const data: boolean | IError = yield AuthService().logout();
-        if (data === true) {
+        const data: { isLoggedIn: boolean } | IError = yield AuthService().logout();
+        if (data && "message" in data) {
+            console.error("Logout error: " + data.message);
+        } else {
             this.clearUser();
             console.log("User logged out successfully");
-        } else if (typeof data === "object" && "message" in data) {
-            console.error("Logout error: " + data.message);
         }
     });
 
