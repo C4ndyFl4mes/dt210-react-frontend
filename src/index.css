@@ -8,3 +8,11 @@ body {
     font-weight: bold;
     text-decoration: underline;
 }
+
+.custom-transition-effect {
+    transition: background-color 0.3s ease-in-out;
+}
+
+.custom-transition-effect:has(a:hover) {
+    background-color: #f0f0f0;
+}
