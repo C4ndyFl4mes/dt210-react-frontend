@@ -16,3 +16,8 @@ body {
 .custom-transition-effect:has(a:hover) {
     background-color: #f0f0f0;
 }
+
+.wrap-break-word {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
