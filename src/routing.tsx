@@ -4,6 +4,7 @@ import AccountPage from "./pages/AccountPage";
 import PostsPage from "./pages/PostsPage";
 import SinglePostPage from "./pages/SinglePostPage";
 import PanelPage from "./pages/PanelPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // Router.
 export default createBrowserRouter([
@@ -24,9 +25,15 @@ export default createBrowserRouter([
                 element: <SinglePostPage />
             },
             {
-                path: "/panel",
-                element: <PanelPage />
+                element: <ProtectedRoute />,
+                children: [
+                    {
+                        path: "/panel",
+                        element: <PanelPage />
+                    }
+                ]
             }
+
         ]
     }
 ]);

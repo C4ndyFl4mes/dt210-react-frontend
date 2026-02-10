@@ -5,11 +5,13 @@ import { Validation } from "../../utils/Validation";
 import type { IError } from "../../interfaces/IError";
 import PostService from "../../services/PostService";
 
+// Formulärskomponenten som används både för att skapa nya inlägg och redigera befintliga.
 export default function PostForm({ post, isEditing, setEditPost, onSuccess }: { post: IPost, isEditing: boolean, setEditPost: React.Dispatch<React.SetStateAction<IPost | null>>, onSuccess: () => void }) {
     const [fields, setFields] = useState<IPost>(post);
     const [validationErrors, setValidationErrors] = useState<{} | IValidationError>({})
     const [serverErrors, setServerErrors] = useState<IError | null>(null);
 
+    // Hanterar formulärets submit, både för att skapa och redigera inlägg. Validerar först fälten och gör sedan anrop till backend. Visar eventuella validerings- eller serverfel.
     const handleFormSubmit = async () => {
         const errors: {} | IValidationError = await Validation.validatePostForm(fields);
         setValidationErrors(errors);
@@ -22,8 +24,10 @@ export default function PostForm({ post, isEditing, setEditPost, onSuccess }: { 
             } else {
                 data as IPost;
                 setServerErrors(null);
-                setEditPost(data);
-                setEditPost(null);
+                if (isEditing) {
+                    setEditPost(data);
+                    setEditPost(null);
+                }
                 onSuccess();
             }
         }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+// Navigationskomponenten.
 export default function Navigation() {
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -22,7 +23,7 @@ export default function Navigation() {
                         <NavLink to="/posts" className="block w-full py-2 md:px-4" onClick={handleNavClick}>Posts</NavLink>
                     </li>
                     <li className="text-center custom-transition-effect rounded-bl-md rounded-br-md md:rounded-bl-none md:rounded-br-none">
-                        <NavLink to="/panel" className="block w-full py-2 md:px-4" onClick={handleNavClick}>Admin Panel</NavLink>
+                        <NavLink to="/panel" className="block w-full py-2 md:px-4" onClick={handleNavClick}>Panel</NavLink>
                     </li>
                 </ul>
             </div>

@@ -10,14 +10,17 @@ class UserStore {
         makeAutoObservable(this);
     }
 
+    // Sätter den aktuella användaren i store.
     setUser(user: IUser) {
         this.user = user;
     }
 
+    // Rensar den aktuella användaren från store.
     clearUser() {
         this.user = null;
     }
 
+    // Loggar ut användaren.
     logOut = flow(function* (this: UserStore) {
         const data: { isLoggedIn: boolean } | IError = yield AuthService().logout();
         if (data && "message" in data) {
@@ -28,6 +31,7 @@ class UserStore {
         }
     });
 
+    // Hämtar den aktuella användaren från backend.
     getCurrentUser = flow(function* (this: UserStore) {
         const data: IUser | IError = yield AuthService().getCurrentUser();
         if (data && "message" in data) {
