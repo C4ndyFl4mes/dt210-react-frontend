@@ -5,7 +5,7 @@ import type { IError } from "../interfaces/IError";
 
 export default function PostService() {
     const client = Axios.create({
-        baseURL: 'http://localhost:5179/api/posts',
+        baseURL: 'https://dt210g-moment3-backend-production.up.railway.app/api/posts',
         withCredentials: true
     });
     

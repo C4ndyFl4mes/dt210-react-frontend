@@ -7,7 +7,7 @@ import type { IError } from "../interfaces/IError";
 
 export default function AuthService() {
     const client = Axios.create({
-        baseURL: 'http://localhost:5179/api/auth',
+        baseURL: 'https://dt210g-moment3-backend-production.up.railway.app/api/auth',
         withCredentials: true
     });
 
